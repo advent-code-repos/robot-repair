@@ -16,6 +16,6 @@ puts "Environment: #{ENV['APP_ENV']}"
 report_controller = ReportController.new logger
 value = report_controller.run 'app/inputs/input'
 logger.info('=============== SOLUTIONs ===============')
-logger.info("1 Part Solution: #{value}")
-logger.info('2 Part Solution: <to be find>')
+logger.info("1 Part Solution: #{value[0]}")
+logger.info("2 Part Solution: #{value[1]}")
 logger.info('=========================================')

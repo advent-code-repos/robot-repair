@@ -18,10 +18,13 @@ class ReportController
     report = @file_service.read input_path
     @logger.debug("Report inspect is: #{report.inspect}")
 
-    value = @report_service.find_value(report)
+    value = @report_service.find(report)
+    @logger.debug("Find value has like return value: #{value}")
+
+    value_hard = @report_service.find_hard(report)
     @logger.debug("Find value has like return value: #{value}")
 
     @logger.debug('Run function ends')
-    value
+    [value, value_hard]
   end
 end
