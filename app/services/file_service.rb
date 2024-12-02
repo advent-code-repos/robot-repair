@@ -6,17 +6,30 @@ class FileService
     @logger = logger
   end
 
-  def read(_path)
+  def read(input_path)
+    @logger.debug('Read function starts')
     @logger.debug("Params is input_path: #{input_path}")
 
-    if File.exist?(input_path)
-      File.readlines(input_path).map do |line|
-        Integer(line.strip)
-      rescue ArgumentError => e
-        @logger.error("Conversion error '#{line.strip}': #{e.message}")
-      end.compact
-    else
-      @logger.error("File '#{input_path}' doesn't exist.")
-    end
+    return handle_missing_file(input_path) unless File.exist?(input_path)
+
+    parse_file(input_path)
+  end
+
+  private
+
+  def handle_missing_file(input_path)
+    @logger.error("File '#{input_path}' doesn't exist.")
+    []
+  end
+
+  def parse_file(input_path)
+    File.readlines(input_path).map { |line| to_integer(line) }.compact
+  end
+
+  def to_integer(line)
+    Integer(line.strip)
+  rescue ArgumentError => e
+    @logger.error("Conversion error '#{line.strip}': #{e.message}")
+    nil
   end
 end
