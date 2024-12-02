@@ -47,7 +47,7 @@
 
 ## 📍 Overview
 
-<code>❯ REPLACE-ME</code>
+A puzzle-solving challenge set on a tropical island where the currency is in the form of gold coins called "stars." Each day, two puzzles are released through an Advent calendar, with the goal of collecting fifty stars by December 25th. In this particular challenge, you need to solve a puzzle related to fixing an expense report. The task is to find two (or three) entries that sum to 2020, then multiply them together.
 
 ---
 
